@@ -245,6 +245,9 @@ jobs:
       - name: Install WordPress
         run: npm run env:install
 
+      - name: Run AJAX tests
+        run: npm run test:${{ env.PHPUNIT_SCRIPT }} -- --verbose -c phpunit.xml.dist --group ajax
+
       - name: Run tests as a multisite install
         run: npm run test:${{ env.PHPUNIT_SCRIPT }} -- --verbose -c tests/phpunit/multisite.xml
 
