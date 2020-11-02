@@ -246,10 +246,10 @@ jobs:
         run: npm run env:install
 
       - name: Run PHPUnit tests
-        run: npm run test:${{ env.PHPUNIT_SCRIPT }} -- --verbose -c phpunit.xml.dist
+        run: npm run test:${{ env.PHPUNIT_SCRIPT }} -- --verbose -c phpunit.xml.dist --group l10n
 
       - name: Run tests as a multisite install
-        run: npm run test:${{ env.PHPUNIT_SCRIPT }} -- --verbose -c tests/phpunit/multisite.xml
+        run: npm run test:${{ env.PHPUNIT_SCRIPT }} -- --verbose -c tests/phpunit/multisite.xml --group l10n
 
       - name: WordPress Test Reporter
         if: ${{ matrix.report }}
