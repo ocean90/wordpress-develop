@@ -84,6 +84,7 @@ class WP_REST_Plugins_Controller_Test extends WP_Test_REST_Controller_Testcase {
 	}
 
 	public function setUp() {
+		parent::setUp();
 		add_filter( 'async_update_translation', '__return_false' );
 	}
 
