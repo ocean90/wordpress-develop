@@ -69,6 +69,7 @@ class WP_REST_Plugins_Controller_Test extends WP_Test_REST_Controller_Testcase {
 		if ( is_multisite() ) {
 			grant_super_admin( self::$super_admin );
 		}
+
 	}
 
 	/**
@@ -82,12 +83,18 @@ class WP_REST_Plugins_Controller_Test extends WP_Test_REST_Controller_Testcase {
 		self::delete_user( self::$admin );
 	}
 
+	public function setUp() {
+		add_filter( 'async_update_translation', '__return_false' );
+	}
+
 	public function tearDown() {
 		parent::tearDown();
 
 		if ( file_exists( WP_PLUGIN_DIR . '/test-plugin/test-plugin.php' ) ) {
 			$this->rmdir( WP_PLUGIN_DIR . '/test-plugin' );
 		}
+
+		remove_filter( 'async_update_translation', '__return_false' );
 	}
 
 	/**
